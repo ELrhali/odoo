@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="gasoil_management" name="Man Gasaoil" web_icon="souhaib_gasoil,static/description/icon.png"/>
+        <menuitem id="souhaib_ravitaillement" name="Ravitaillement gasoil" parent="gasoil_management" action="souhaib_gasoil_ravitaillement_action" sequence="2"/>
+        <menuitem id="souhaib_remplissage" name="Remplissage gasoil" parent="gasoil_management" action="souhaib_gasoil_remplissage_action" sequence="3"/>
+        <menuitem id="souhaib_citernes" name="Citernes" parent="gasoil_management" action="souhaib_action_location_citern" sequence="4" />
+
+</odoo>

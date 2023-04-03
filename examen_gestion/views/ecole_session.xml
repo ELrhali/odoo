@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="ecole_session_form">
+            <field name="name">ecole_session</field>
+            <field name="model">ecole.session</field>
+            <field name="arch" type="xml">
+           
+                <form >
+                    <sheet>
+                        <group string="session">
+                            <group>
+                                <field name="name"/>
+                                <field name="student_count"/>
+                            </group>
+                            <group>
+                                <field name="date_debut"/>
+                                
+                                <field name="date_fin"/>
+                                <field name="state"/>
+
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ecole_session_tree">
+            <field name="name">ecole_session_tree</field>
+            <field name="model">ecole.session</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" optional="show"/>
+                    <field name="student_count" optional="show"/>
+                    <field name="date_debut" optional="hide"/>
+
+                    <field name="date_fin" optional="hide"/>
+
+                    
+                    <field name="state" optional="show"/>
+             
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="ecole_session_action">
+            <field name="name">Session</field>
+            <field name="res_model">ecole.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ecole_session_tree"/>
+        </record>
+
+
+
+
+    </data>
+    <menuitem action="ecole_session_action" parent="ecole_configuration"
+    id="menu_ecole_session" sequence="9"/>
+</odoo>

@@ -1,0 +1,111 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="souhaib_gasoil_ravitaillement_form">
+            <field name="name">souhaib_gasoil_ravitaillement_form</field>
+            <field name="model">souhaib.gasoil.ravitaillement</field>
+            <field name="arch" type="xml">
+                <form>
+                     <header>
+                         <button name="draft_ravitaillement" attrs= "{'invisible': [('state', '=', 'draft')]}" string="Remettre Brouillon" type="object" class="btn btn-secondary"/>
+                         <button name="confirm_ravitaillement" attrs= "{'invisible': [('state', '=', 'done')]}" string="Confirmer" type="object" class="btn btn-secondary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+
+                     </header>
+                    <sheet>
+                         <div class="oe_button_box" name="button_box" position="inside">
+                            <button type="object"
+                                name="action_view_pickings"
+                                class="oe_stat_button" icon="fa-th-list">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value" widget="statinfo">
+                                        <field name="count_pickings" widget="statinfo" nolabel="1" colspan="2" class="mr4"/>
+                                    </span>
+                                    <span class="o_stat_text">Transfers</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" attrs="{'readonly':True}" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+<!--                                <field name="quantity" attrs="{'invisible':[('type' , '!=', 'remplissage')], 'readonly':[('state','=','done')]}"/>-->
+                                <field name="quantity_total" attrs="{'readonly':True}" />
+                                <field name="remarque" attrs="{'readonly':[('state','=','done')]}"/>
+<!--                                <field name="previous_stock_picking_helper_id" attrs="{'invisible':[('type' , '!=', 'consommation')], 'readonly':[('state','=','done')]}" domain="[('type', '=', 'consommation'), ('vehicule_id', '=', vehicule_id), ('id', '!=', context.get('active_id'))]"/>-->
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="date_prevu" attrs="{ 'readonly':True}"/>
+                                <field name="product_id"  domain="[('is_fuel', '=', True)]" attrs="{'readonly':[('state','=','done')]}"/>
+<!--                                <field name="citerne" domain="[('is_citerne', '=', True)]" context="{'default_is_citerne': True}" attrs="{'invisible':[('type' , '!=', 'remplissage')], 'required':[('type' , '=', 'remplissage')], 'readonly':[('state','=','done')]}"/>-->
+                                <field name="quantity_prevu" attrs="{'readonly':True}"/>
+<!--                                <field name="purchase_order_id" attrs="{'invisible':[('type' , '!=', 'remplissage')], 'readonly':True}"/>-->
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Ravitaillement">
+                                <field name="line_ids" attrs="{'readonly':[('state','=','done')]}">
+                                    <tree editable="bottom">
+                                        <field name="citerne" domain="[('is_citerne', '=', True)]" context="{'default_is_citerne': True}" width="1"/>
+                                        <field name="quantity" width="1"/>
+<!--                                        <field name="compteur_n_1"  width="1"/>-->
+<!--                                        <field name="compteur"  width="1"/>-->
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="souhaib_gasoil_ravitaillement_tree">
+            <field name="name">souhaib_gasoil_ravitaillement_tree</field>
+            <field name="model">souhaib.gasoil.ravitaillement</field>
+            <field name="arch" type="xml">
+                <tree default_order="date desc">
+                    <field name="date" optional="show"/>
+                    <field name="name" optional="show"/>
+<!--                    <field name="product_id" optional="show"/>-->
+                    <field name="quantity_total" optional="show"/>
+<!--                    <field name="line_ids" widget="many2many_tags" optional="show" string="Citernes"/>-->
+                    <field name="remarque" optional="hide"/>
+                    <field name="quantity_prevu" optional="hide"/>
+                    <field name="date_prevu" optional="hide"/>
+<!--                    <field name="picking_id" widget="many2onebutton" optional="hide"/>-->
+                    <field name="state" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        <record id="cps_stock_helper_view_search" model="ir.ui.view">-->
+<!--            <field name="name">cps.souhaib.stock.picking.helper.view.search</field>-->
+<!--            <field name="model">souhaib.stock.picking.helper</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <search string="Helper">-->
+<!--                    <field name="vehicule_id"/>-->
+<!--                    <field name="conducteur_id"/>-->
+<!--                    <field name="model_id"/>-->
+<!--                    <field name="type_vehicule"/>-->
+<!--                </search>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record model="ir.actions.act_window" id="souhaib_gasoil_ravitaillement_action">
+            <field name="name">Ravitaillement gasoil</field>
+            <field name="res_model">souhaib.gasoil.ravitaillement</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="souhaib_gasoil_ravitaillement_tree"/>
+        </record>
+
+
+
+
+    </data>
+</odoo>

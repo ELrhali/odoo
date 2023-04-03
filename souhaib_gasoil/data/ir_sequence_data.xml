@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="seq_ravitaillement_gasoil" model="ir.sequence">
+			<field name="name">ravitaillement_gasoil</field>
+			<field name="code">ravitaillement_sequence</field>
+			<field name="prefix">RAV N /</field>
+			<field name="padding">5</field>
+		</record>
+
+		<record id="seq_remplissage_gasoil" model="ir.sequence">
+			<field name="name">remplissage_gasoil</field>
+			<field name="code">remplissage_sequence</field>
+			<field name="prefix">BON N /</field>
+			<field name="padding">5</field>
+		</record>
+
+
+
+	</data>
+</odoo>

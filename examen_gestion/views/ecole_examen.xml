@@ -1,0 +1,151 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="ecole_examen_form">
+            <field name="name">ecole_examen_form</field>
+            <field name="model">ecole.examen</field>
+            <field name="arch" type="xml">
+                <form>
+                    
+                    <sheet>
+
+                        <div class="oe_title">
+                            <label for="cnee" class="oe_edit_only"/>
+                            <field name="cnee" />
+
+                                <field name="examen_name" />
+                           
+                        </div>
+                        <group>
+                            <group>
+                                <field name="annee_unv" />
+                                <field name="date" />
+                                <field name="matiere" />
+                            </group>
+                            <group>
+                                <field name="session"/>
+                                <field name="semestre" />
+                                <field name="typeexamen" />
+                                <field name="sur_veillant" />
+
+
+                            </group>
+                           
+                        </group>
+                        <notebook>
+                            <page string="Surveillant">
+                                <field name="sur_veillant" >
+                                   
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ecole_examen_tree">
+            <field name="name">ecole_examen_tree</field>
+            <field name="model">ecole.examen</field>
+            <field name="arch" type="xml">
+                <tree default_order="date desc">
+                    <field name="examen_name" optional="show"/>
+                    <field name="date" optional="show"/>
+                    <field name="cnee" optional="show"/>
+                    <field name="annee_unv" optional="hide"/>
+                    <field name="session" optional="hide"/>
+                    <field name="matiere" optional="show"/>
+                    <field name="semestre" optional="show"/>
+                    <field name="typeexamen" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="ecole_examen_action">
+            <field name="name">examen</field>
+            <field name="res_model">ecole.examen</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_citerne', '=', True)]</field>
+            <field name="context">{'default_is_citerne':1}</field>
+            <field name="view_id" ref="ecole_examen_tree"/>
+        </record>
+
+
+
+
+    </data>
+    <menuitem action="ecole_examen_action" parent="ecole_configuration"
+    id="menu_ecole_examen" sequence="7"/>
+
+
+
+
+
+   
+</odoo>
+<!-- <odoo>
+    <data>
+        <record model="ir.ui.view" id="ecole_examen_form">
+            <field name="name">ecole_examen</field>
+            <field name="model">ecole.examen</field>
+            <field name="arch" type="xml">
+           
+                <form >
+                    <sheet>
+                        <group string="examen">
+
+                            <group>
+                              
+                                
+
+                                <field name="examen_name"/>
+                                <field name="cnee"/>
+                                <field name="annee_unv"/>
+                                <field name="session"/>
+                              
+                                <field name="sur_veillant"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ecole_examen_tree">
+            <field name="name">ecole_examen_tree</field>
+            <field name="model">ecole.examen</field>
+            <field name="arch" type="xml">
+                <tree >
+                   
+
+                    <field name="examen_name"/>
+                    <field name="cnee"/>
+                    <field name="annee_unv"/>
+                                <field name="session"/>
+                                <field name="sur_veillant"/>
+                           
+
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="ecole_examen_action">
+            <field name="name">examen</field>
+            <field name="res_model">ecole.examen</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_citerne', '=', True)]</field>
+            <field name="context">{'default_is_citerne':1}</field>
+            <field name="view_id" ref="ecole_examen_tree"/>
+        </record>
+
+
+
+
+    </data>
+    <menuitem action="ecole_examen_action" parent="ecole_configuration"
+    id="menu_ecole_examen" sequence="7"/>
+</odoo> -->

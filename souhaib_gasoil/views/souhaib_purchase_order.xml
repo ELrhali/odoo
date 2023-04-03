@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="ensa_purchase_order_form_view">
+        <field name="name">souhaib.purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <div class="oe_button_box" name="button_box" position="inside">
+                    <button type="object" attrs="{'invisible':[('is_gasoil' , '=', False)]}"
+                        name="action_view_ravitaillement"
+                        class="oe_stat_button" icon="fa-th-list">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value" widget="statinfo">
+                                <field name="count_ravitaillement" widget="statinfo" nolabel="1" colspan="2" class="mr4"/>
+                            </span>
+                            <span class="o_stat_text">Ravitaillement gasoil</span>
+                        </div>
+                    </button>
+                </div>
+                <field name="origin" position="after">
+                    <field name="is_gasoil" invisible="1"/>
+<!--                    <field name="ensa_ravitaillement_ids" widget="many2many_tags_link" attrs="{'invisible':[('is_gasoil' , '=', False)]}"/>-->
+                </field>
+            </data>
+        </field>
+    </record>
+</odoo>

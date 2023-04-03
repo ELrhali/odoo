@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_stock_location_citern_form_inheritt" model="ir.ui.view">
+        <field name="name">stock.location.form.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+<!--            <div class="oe_button_box" name="button_box" position="inside">-->
+<!--                <button type="object" style="width: 10%!important;"-->
+<!--                    name="action_remplissage_gasoil"-->
+<!--                    class="oe_stat_button" icon="fa-exchange">-->
+<!--                    <div class="o_field_widget o_stat_info">-->
+<!--                        <span class="o_stat_value" widget="statinfo">-->
+<!--                            <field name="count_remplissage_gasoil" widget="statinfo" nolabel="1" colspan="2" class="mr4"/>-->
+<!--                        </span>-->
+<!--                        <span class="o_stat_text">Remplissage</span>-->
+<!--                    </div>-->
+<!--                </button>-->
+<!--                <button type="object" style="width: 10%!important;"-->
+<!--                    name="action_consommation_gasoil"-->
+<!--                    class="oe_stat_button" icon="fa-exchange">-->
+<!--                    <div class="o_field_widget o_stat_info">-->
+<!--                        <span class="o_stat_value" widget="statinfo">-->
+<!--                            <field name="count_consommation_gasoil" widget="statinfo" nolabel="1" colspan="2" class="mr4"/>-->
+<!--                        </span>-->
+<!--                        <span class="o_stat_text">Consommation</span>-->
+<!--                    </div>-->
+<!--                </button>-->
+<!--            </div>-->
+            <xpath expr="//field[@name='return_location']" position="after">
+                <field name="is_citerne"/>
+            </xpath>
+            <xpath expr="//field[@name='return_location']" position="after">
+<!--                <field name="product_id" attrs="{'invisible':[('is_citerne' , '=', False)]}"/>-->
+                <field name="capacity" />
+                <field name="compteur" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="souhaib_action_location_citern" model="ir.actions.act_window">
+        <field name="name">Citernes</field>
+        <field name="res_model">stock.location</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_citerne', '=', True)]</field>
+        <field name="context">{'default_is_citerne':1}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a new location
+          </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+
+        <record id="ensa_product_template_form_view" model="ir.ui.view">
+            <field name="name">ensa.product.template.form.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="is_fuel" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="ensa_product_normal_form_view_mps" model="ir.ui.view">
+            <field name="name">ensa.product.product.view.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="before">
+                    <field name="product_tmpl_id" readonly="1" required="0"/>
+                </xpath>
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="is_fuel" />
+
+                </xpath>
+            </field>
+        </record>
+
+        <record id="ensa_product_template_form_view" model="ir.ui.view">
+            <field name="name">ensa.product.template.form.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="is_fuel"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

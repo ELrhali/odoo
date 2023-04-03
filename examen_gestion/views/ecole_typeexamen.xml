@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="ecole_typeexamen_form">
+            <field name="name">ecole_typeexamen</field>
+            <field name="model">ecole.typeexamen</field>
+            <field name="type">calendar</field>
+            <field name="arch" type="xml">
+               
+                <form string="Exam Type">
+                    <header>
+                        <field name="name" required="1"/>
+                        <field name="duration" />
+                        <field name="question_count" />
+                        <field name="points_per_question" />
+                        <field name="minimum_grade" />
+                    </header>
+                    <sheet>
+                        <group>
+
+                            <field name="created_by"/>
+                            <field name="creation_date"/>
+
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ecole_typeexamen_tree">
+            <field name="name">ecole_typeexamen_tree</field>
+            <field name="model">ecole.typeexamen</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" optional="show"/>
+                    <field name="duration" optional="show"/>
+                    
+                    <field name="question_count" optional="hide"/>
+                    <field name="points_per_question" optional="hide"/>
+                    <field name="minimum_grade" optional="hide"/>
+                    <field name="created_by" optional="show"/>
+                    <field name="creation_date" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="ecole_typeexamen_action">
+            <field name="name">Type Examen</field>
+            <field name="res_model">ecole.typeexamen</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ecole_typeexamen_tree"/>
+        </record>
+
+
+
+
+    </data>
+    <menuitem action="ecole_typeexamen_action" parent="ecole_configuration"
+    id="menu_ecole_typeexamen" sequence="8"/>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- <menuitem id="ecole_gestion" name="Gestion Examen" web_icon="souhaib_gasoil,static/description/icon.png"/>
+        <menuitem id="ecole_etudiant" name="etudiant" parent="ecole_gestion" action="ecole_action_location_etudiant" sequence="1" />
+        <menuitem id="ecole_surveillance" name="surveillance" parent="ecole_gestion" action="ecole_action_ecole_surveillance" sequence="1" />
+        <menuitem id="ecole_configuration" name="Configuration" parent="ecole_gestion" />
+        <menuitem id="ecole_surveillance" name="module" parent="ecole_configuration"  action="ecole_module_action" />
+         -->
+        <!-- test  -->
+        <menuitem id="ecole_gestion" name="Gestion Examen" sequence="2"/>
+        <menuitem id="ecole_configuration" name="Configuration" parent="ecole_gestion"/>
+        <!-- <menuitem id="menu_education_class_conf" name="Class" parent="ecole_configuration" sequence="0"/> -->
+
+
+
+</odoo>

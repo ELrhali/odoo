@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="ecole_matiere_form">
+            <field name="name">ecole_matiere</field>
+            <field name="model">ecole.matiere</field>
+            <field name="arch" type="xml">
+           
+                <form >
+                    <sheet>
+                        <group string="matiere">
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="module"/>
+                              
+                            </group>
+                            <field name="description" placeholder="Enter description here"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ecole_matiere_tree">
+            <field name="name">ecole_matiere_tree</field>
+            <field name="model">ecole.matiere</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" optional="show"/>
+                    <field name="code" optional="hide"/>
+                    
+                    <field name="module" optional="show"/>
+             
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="ecole_matiere_action">
+            <field name="name">Matiere</field>
+            <field name="res_model">ecole.matiere</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ecole_matiere_tree"/>
+        </record>
+
+
+
+
+    </data>
+    <menuitem action="ecole_matiere_action" parent="ecole_configuration"
+    id="menu_ecole_matiere" sequence="7"/>
+</odoo>

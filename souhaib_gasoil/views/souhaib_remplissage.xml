@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="souhaib_gasoil_remplissage_form">
+            <field name="name">souhaib_gasoil_remplissage_form</field>
+            <field name="model">souhaib.gasoil.remplissage</field>
+            <field name="arch" type="xml">
+                <form>
+                     <header>
+                   
+                            <button name="draft_remplissage" attrs= "{'invisible': [('state', '=', 'draft')]}" string="Remettre Brouillon" type="object" class="btn btn-secondary"/>
+                            <button name="confirm_remplissage" attrs= "{'invisible': [('state', '=', 'done')]}" string="Confirmer" type="object" class="btn btn-secondary"/>
+                           <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+   
+                        </header>                    
+                    <sheet>
+
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" attrs="{'readonly':True}" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+<!--                                <field name="quantity" attrs="{'invisible':[('type' , '!=', 'remplissage')], 'readonly':[('state','=','done')]}"/>-->
+                                <field name="quantity_total" attrs="{'readonly':True}" />
+                                <field name="remarque" attrs="{'readonly':[('state','=','done')]}"/>
+<!--                                <field name="previous_stock_picking_helper_id" attrs="{'invisible':[('type' , '!=', 'consommation')], 'readonly':[('state','=','done')]}" domain="[('type', '=', 'consommation'), ('vehicule_id', '=', vehicule_id), ('id', '!=', context.get('active_id'))]"/>-->
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="product_id"  />
+                                <field name="vehicule_id"  />
+                            </group>
+                        </group>
+                        <notebook>
+                          
+                                <page string="Remplissage">
+                                    <field name="line_ids" attrs="{'readonly':[('state','=','done')]}">
+                                        <tree editable="bottom">
+                                            <field name="citerne" domain="[('is_citerne', '=', True)]" context="{'default_is_citerne': True}" width="1"/>
+                                            <field name="quantity" width="1"/>
+    
+                                        </tree>
+                                    </field>
+                                </page>
+                           
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="souhaib_gasoil_remplissage_tree">
+            <field name="name">souhaib_gasoil_remplissage_tree</field>
+            <field name="model">souhaib.gasoil.remplissage</field>
+            <field name="arch" type="xml">
+                <tree default_order="date desc">
+                    <field name="date" optional="show"/>
+                    <field name="name" optional="show"/>
+                    <field name="product_id" optional="show"/>
+                     <field name="vehicule_id" optional="show"/>
+                    <field name="quantity_total" optional="show"/>
+                    <field name="remarque" optional="hide"/>
+                    <field name="state" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="souhaib_gasoil_remplissage_action">
+            <field name="name">Remplissage gasoil</field>
+            <field name="res_model">souhaib.gasoil.remplissage</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="souhaib_gasoil_remplissage_tree"/>
+        </record>
+
+
+
+
+    </data>
+</odoo>

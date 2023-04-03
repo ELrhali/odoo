@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="ecole_semestre_form">
+            <field name="name">ecole_semestre</field>
+            <field name="model">ecole.semestre</field>
+            <field name="type">calendar</field>
+            <field name="arch" type="xml">
+                <form >
+                    <sheet>
+                        <group string="Module">
+                            <group>
+                                <field name="name"/>
+                                <field name="date_debut"/>
+                                <field name="date_fin"/>
+
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="location"/>
+                              
+                            </group>
+                            
+                            <field name="description" placeholder="Enter description here"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ecole_semestre_tree">
+            <field name="name">ecole_semestre_tree</field>
+            <field name="model">ecole.semestre</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" optional="show"/>
+                    <field name="date_debut" optional="show"/>
+                    
+                    <field name="date_fin" optional="show"/>
+                    <field name="date" optional="show"/>
+                    <field name="location" optional="show"/>
+             
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="ecole_semestre_action">
+            <field name="name">Semestre</field>
+            <field name="res_model">ecole.semestre</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ecole_semestre_tree"/>
+        </record>
+
+
+
+
+    </data>
+    <menuitem action="ecole_semestre_action" parent="ecole_configuration"
+    id="menu_ecole_semestre" sequence="8"/>
+</odoo>

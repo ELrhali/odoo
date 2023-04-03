@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="ecole_module_form">
+            <field name="name">ecole_module</field>
+            <field name="model">ecole.module</field>
+            <field name="arch" type="xml">
+           
+                <form >
+                    <sheet>
+                        <group string="Module">
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="duree"/>
+                              
+                            </group>
+                            <field name="description" placeholder="Enter description here"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ecole_module_tree">
+            <field name="name">ecole_module_tree</field>
+            <field name="model">ecole.module</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="name" optional="show"/>
+                    <field name="code" optional="show"/>
+                    
+                    <field name="duree" optional="show"/>
+                    
+                    <field name="state" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="ecole_module_action">
+            <field name="name">Module</field>
+            <field name="res_model">ecole.module</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ecole_module_tree"/>
+        </record>
+
+
+
+
+    </data>
+    <menuitem action="ecole_module_action" parent="ecole_configuration"
+    id="menu_ecole_module" sequence="6"/>
+</odoo>

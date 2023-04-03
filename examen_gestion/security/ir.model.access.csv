@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ecole_module,access.ecole.module,model_ecole_module,base.group_user,1,1,1,0
+access_ecole_matiere,access.ecole.matiere,model_ecole_matiere,base.group_user,1,1,1,0
+access_ecole_semestre,access.ecole.semestre,model_ecole_semestre,base.group_user,1,1,1,0
+access_ecole_session,access.ecole.session,model_ecole_session,base.group_user,1,1,1,0
+access_ecole_typeexamen,access.ecole.typeexamen,model_ecole_typeexamen,base.group_user,1,1,1,0
+access_ecole_examen,access.ecole.examen,model_ecole_examen,base.group_user,1,1,1,0
+
+access_ecole_anneeunv,access.ecole.anneeunv,model_ecole_anneeunv,base.group_user,1,1,1,0
+
+access_ecole_surveillant,access.ecole.surveillant,model_ecole_surveillant,base.group_user,1,1,1,0
